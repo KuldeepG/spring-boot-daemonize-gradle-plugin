@@ -26,7 +26,7 @@ class DaemonStartTask extends DefaultTask {
         def processArgs = ([
                 environmentSettings.javaExec,
                 new String("-Dserver.port=${settings.serverPort}"),
-                new String("-Dspring.profiles=${settings.serverProfile}"),
+                new String("-Dspring.profiles.active=${settings.serverProfile}"),
                 new String("-Dspring.config.location=${settings.propertiesFile}"),
                 "-Dcom.sun.management.jmxremote",
                 new String("-Dcom.sun.management.jmxremote.port=${settings.jmxPort}"),

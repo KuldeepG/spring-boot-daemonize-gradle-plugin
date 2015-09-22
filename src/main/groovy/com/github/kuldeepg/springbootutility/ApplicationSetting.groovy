@@ -33,22 +33,6 @@ class ApplicationSetting {
         if(!self.warFile?.trim() || !self.serverProfile?.trim())
             assert false, "warFile and serverProfile are required parameters!!"
 
-        //Check if port is available
-        boolean portAvailable = true
-        ServerSocket socket = null
-        try {
-            socket = new ServerSocket(self.serverPort)
-        } catch(IOException ex) {
-            portAvailable = false
-        } finally {
-            if(socket != null)
-                try {
-                    socket.close()
-                } catch(IOException ex) {}
-        }
-        if(!portAvailable)
-            assert false, "Port ${self.serverPort} is already in use!"
-
         return self
     }
 }
