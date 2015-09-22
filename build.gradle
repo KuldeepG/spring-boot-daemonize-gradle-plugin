@@ -1,0 +1,44 @@
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "com.gradle.publish:plugin-publish-plugin:0.9.1"
+    }
+}
+
+apply plugin: "com.gradle.plugin-publish"
+apply plugin: 'groovy'
+apply plugin: 'maven'
+
+sourceCompatibility = 1.7
+group = 'com.github.kuldeepg.springbootutility'
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile(gradleApi(),
+            localGroovy(),
+            "org.codehaus.groovy.modules.http-builder:http-builder:0.7.1",
+            "org.apache.commons:commons-lang3:3.4"
+    )
+}
+
+pluginBundle {
+    website = 'http://www.gradle.org/'
+    vcsUrl = 'https://github.com/KuldeepG/spring-boot-daemonize-gradle-plugin.git'
+    description = 'Plugin to start spring boot application as daemon.'
+    tags = ['spring-boot', 'daemonize', 'background', 'start', 'stop']
+
+    plugins {
+        springBootDaemonizePlugin {
+            id = 'com.github.kuldeepg.springbootutility.springbootdaemonize'
+            displayName = 'Gradle Spring Boot Daemonize plugin'
+        }
+    }
+}
