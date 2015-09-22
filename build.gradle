@@ -15,7 +15,7 @@ apply plugin: 'maven'
 
 sourceCompatibility = 1.7
 group = 'com.github.kuldeepg.springbootutility'
-version = '1.0'
+version = '1.0.2'
 
 repositories {
     mavenCentral()
@@ -39,7 +39,7 @@ pluginBundle {
         springBootDaemonizePlugin {
             id = 'com.github.kuldeepg.springbootutility'
             displayName = 'Gradle Spring Boot Daemonize plugin'
-            version = '1.0'
+            version = '1.0.2'
         }
     }
 }
