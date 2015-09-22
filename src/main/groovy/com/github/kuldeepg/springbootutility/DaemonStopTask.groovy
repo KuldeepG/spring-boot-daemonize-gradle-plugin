@@ -1,6 +1,7 @@
 package com.github.kuldeepg.springbootutility
 
 import org.apache.commons.lang3.SystemUtils
+import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.TaskAction
 
 import javax.management.MBeanServerConnection
@@ -14,7 +15,7 @@ import java.lang.management.RuntimeMXBean
  * Created by Kuldeep on 9/21/15.
  */
 
-class DaemonStopTask {
+class DaemonStopTask  extends DefaultTask {
     ApplicationSetting settings = new ApplicationSetting()
 
     DaemonStopTask configure(Closure config){

@@ -30,15 +30,16 @@ dependencies {
 }
 
 pluginBundle {
-    website = 'http://www.gradle.org/'
+    website = 'https://www.github.com/KuldeepG'
     vcsUrl = 'https://github.com/KuldeepG/spring-boot-daemonize-gradle-plugin.git'
     description = 'Plugin to start spring boot application as daemon.'
     tags = ['spring-boot', 'daemonize', 'background', 'start', 'stop']
 
     plugins {
         springBootDaemonizePlugin {
-            id = 'com.github.kuldeepg.springbootutility.springbootdaemonize'
+            id = 'com.github.kuldeepg.springbootutility'
             displayName = 'Gradle Spring Boot Daemonize plugin'
+            version = 1.0
         }
     }
 }
