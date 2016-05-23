@@ -46,8 +46,13 @@ class DaemonStartTask extends DefaultTask {
 
         Process process = processBuilder.start()
         Integer waitInSecs = settings.maxWait
-
-        RESTClient client = new RESTClient(new String("http://${settings.ipAddress}:${settings.serverPort}/"))
+        String url = new String("http://${settings.ipAddress}:${settings.serverPort}/")
+        def urlStringBuilder = new StringBuilder()
+        urlStringBuilder.append(url)
+        if(${settings.contextRoot}?.trim()){
+            urlStringBuilder.append( ${settings.contextRoot}).append( "/")
+        }
+        RESTClient client = new RESTClient(url.toString())
         client.getClient().getParams().setParameter("http.connection.timeout", 5000)
         client.getClient().getParams().setParameter("http.socket.timeout", 5000)
 
