@@ -14,9 +14,10 @@ class ApplicationSetting {
     String[] jvmArgs = []
     String name
     String warFile
+    String contextPath
 
     //Application validation properties
-    String serverValidationPath = '/health'
+    String serverValidationPath 
     Integer maxWait = 120 //in secs
 
     ApplicationSetting configure(Closure cfg) {
@@ -24,6 +25,7 @@ class ApplicationSetting {
         cfg()
         if(jmxPort == -1)
             jmxPort = serverPort + 1
+        serverValidationPath = contextPath + '/health'
         ipAddress = InetAddress.getLocalHost().getHostAddress()
         validate(this)
     }
