@@ -57,12 +57,8 @@ class DaemonStartTask extends DefaultTask {
                 client.options path: settings.serverValidationPath
                 break
             } catch(ex) {
-                if(ex instanceof java.net.SocketTimeoutException)
-                    waitInSecs -= 5
-                else
                     waitInSecs -= 1
-
-                sleep 1
+                    sleep 1000
             }
         }
         if(waitInSecs == 0) {
