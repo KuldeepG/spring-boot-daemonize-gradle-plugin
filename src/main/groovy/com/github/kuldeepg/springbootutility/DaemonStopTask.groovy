@@ -28,7 +28,7 @@ class DaemonStopTask  extends DefaultTask {
     @TaskAction
     def stopDaemon(){
         try {
-            JMXServiceURL jmxUrl = new JMXServiceURL("service:jmx:rmi:///jndi/rmi://${settings.ipAddress}:${settings.jmxPort}/${settings.contextPath}/jmxrmi")
+            JMXServiceURL jmxUrl = new JMXServiceURL("service:jmx:rmi:///jndi/rmi://${settings.ipAddress}:${settings.jmxPort}/jmxrmi")
             final JMXConnector connector = JMXConnectorFactory.connect(jmxUrl)
 
             final MBeanServerConnection remoteConnection = connector.getMBeanServerConnection()
