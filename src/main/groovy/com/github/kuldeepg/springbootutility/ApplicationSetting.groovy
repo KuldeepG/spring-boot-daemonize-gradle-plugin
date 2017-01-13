@@ -14,11 +14,9 @@ class ApplicationSetting {
     String[] jvmArgs = []
     String name
     String warFile
-    String contextPath
 
     //Application validation properties
-
-    String serverValidationPath 
+    String serverValidationPath =  'health'
 
     Integer maxWait = 120 //in secs
 
@@ -28,9 +26,9 @@ class ApplicationSetting {
         if(jmxPort == -1)
             jmxPort = serverPort + 1
 
-        serverValidationPath = contextPath?.trim() + '/health'
+        if(!ipAddress?.trim())
+            ipAddress = InetAddress.getLocalHost().getHostAddress()
 
-        ipAddress = InetAddress.getLocalHost().getHostAddress()
         validate(this)
     }
 
