@@ -47,13 +47,15 @@ class DaemonStartTask extends DefaultTask {
         Process process = processBuilder.start()
         Integer waitInSecs = settings.maxWait
         String url = new String("http://${settings.ipAddress}:${settings.serverPort}/")
-        
+
+        println "url: ${url}"
         RESTClient client = new RESTClient(url)
         client.getClient().getParams().setParameter("http.connection.timeout", 5000)
         client.getClient().getParams().setParameter("http.socket.timeout", 5000)
 
         while(waitInSecs > 0) {
             try {
+                println "path: ${settings.serverValidationPath}"
                 client.options path: settings.serverValidationPath
                 break
             } catch(ex) {
