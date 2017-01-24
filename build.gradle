@@ -6,16 +6,17 @@ buildscript {
     }
     dependencies {
         classpath "com.gradle.publish:plugin-publish-plugin:0.9.1"
+        classpath 'net.researchgate:gradle-release:2.4.0'
     }
 }
 
 apply plugin: "com.gradle.plugin-publish"
+apply plugin: 'net.researchgate.release'
 apply plugin: 'groovy'
 apply plugin: 'maven'
 
 sourceCompatibility = 1.7
 group = 'com.github.kuldeepg.springbootutility'
-version = '1.0.2'
 
 repositories {
     mavenCentral()
@@ -29,6 +30,25 @@ dependencies {
     )
 }
 
+task wrapper(type: Wrapper) {
+   gradleVersion = '2.3' //version required
+}
+
+release {
+    buildTasks = ['clean', 'assemble']
+    revertOnFail = true
+    scmAdapters = [
+        net.researchgate.release.GitAdapter
+    ]
+
+    git {
+        requireBranch = ''
+        pushToRemote = 'origin'
+        pushToBranchPrefix = ''
+        commitVersionFileOnly = false
+    }
+}
+
 pluginBundle {
     website = 'https://www.github.com/KuldeepG'
     vcsUrl = 'https://github.com/KuldeepG/spring-boot-daemonize-gradle-plugin.git'
@@ -39,7 +59,7 @@ pluginBundle {
         springBootDaemonizePlugin {
             id = 'com.github.kuldeepg.springbootutility'
             displayName = 'Gradle Spring Boot Daemonize plugin'
-            version = '1.0.2'
+            version = project.version
         }
     }
 }
