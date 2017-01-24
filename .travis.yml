@@ -1,0 +1,31 @@
+language: groovy
+
+jdk:
+  - oraclejdk8
+
+install:
+  - gradle clean assemble
+
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+cache:
+  directories:
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+
+deploy:
+  -
+    provider: script
+    script: .travis/deploy.sh
+    on:
+      repo: KuldeepG/spring-boot-daemonize-gradle-plugin
+      branch: master
+      jdk: oraclejdk8
+  -
+    provider: script
+    script: .travis/deploy.sh
+    on:
+      repo: KuldeepG/spring-boot-daemonize-gradle-plugin
+      tags: true
+      jdk: oraclejdk8
