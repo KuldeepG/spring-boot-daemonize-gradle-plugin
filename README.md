@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/KuldeepG/spring-boot-daemonize-gradle-plugin.svg?branch=master)](https://travis-ci.org/KuldeepG/spring-boot-daemonize-gradle-plugin)
 # spring-boot-daemonize-gradle-plugin
 
 This gradle plugin helps you to daemonize your spring boot applications.
