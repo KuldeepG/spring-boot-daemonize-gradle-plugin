@@ -36,12 +36,13 @@ task wrapper(type: Wrapper) {
 
 release {
     buildTasks = ['clean', 'assemble']
+    revertOnFail = true
     scmAdapters = [
         net.researchgate.release.GitAdapter
     ]
 
     git {
-        requireBranch = 'master'
+        requireBranch = ''
         pushToRemote = 'origin'
         pushToBranchPrefix = ''
         commitVersionFileOnly = false
